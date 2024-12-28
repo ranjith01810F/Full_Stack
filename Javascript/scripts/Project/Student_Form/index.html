@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Multiple User Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 20px;
+            text-align: center;
+        }
+        .form-container {
+            display: inline-block;
+            text-align: left;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .gender-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .gender-container label {
+            font-size: 16px;
+        }
+        button {
+            width: auto;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        table th {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <h2>Save User Details in Table</h2>
+    <div class="form-container">
+        <input id="Name" placeholder="Enter your Name">
+        <input id="age" placeholder="Enter your Age">
+        <div class="gender-container">
+            <label>
+                <input type="radio" name="Gender" value="Male"> Male
+            </label>
+            <label>
+                <input type="radio" name="Gender" value="Female"> Female
+            </label>
+        </div>
+        <input id="Course" placeholder="Enter your Course">
+        <input id="Email" placeholder="Enter your Email">
+        <button onclick="saveData()">Save</button>
+    </div>
+
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Course</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        function saveData() {
+            // Get input values
+            var name = document.getElementById("Name").value;
+            var age = document.getElementById("age").value;
+            var gender = document.querySelector('input[name="Gender"]:checked');
+            var course = document.getElementById("Course").value;
+            var email = document.getElementById("Email").value;
+
+            // Check if any field is empty
+            if (!name || !age || !gender || !course || !email) {
+                alert("Please fill in all the fields.");
+                return;
+            }
+
+            // Add data to the table
+            var table = document.getElementById("userTable").querySelector("tbody");
+            var newRow = table.insertRow();
+
+            newRow.innerHTML = `
+                <td>${name}</td>
+                <td>${age}</td>
+                <td>${gender.value}</td>
+                <td>${course}</td>
+                <td>${email}</td>
+            `;
+
+            // Clear the input fields after saving
+            document.getElementById("Name").value = "";
+            document.getElementById("age").value = "";
+            document.querySelector('input[name="Gender"]:checked').checked = false;
+            document.getElementById("Course").value = "";
+            document.getElementById("Email").value = "";
+        }
+    </script>
+</body>
+</html>

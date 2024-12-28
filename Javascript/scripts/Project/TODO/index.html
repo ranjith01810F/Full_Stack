@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 20px;
+            text-align: center;
+        }
+        #input {
+            padding: 10px;
+            width: 60%;
+            margin: 10px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-left: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1d70a3;
+        }
+        #listcontainer {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        #listcontainer li {
+            background-color: #ffffff;
+            margin: 10px auto;
+            padding: 10px 15px;
+            width: 60%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        #listcontainer li button {
+            background-color: #e74c3c;
+        }
+        #listcontainer li button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <input id="input" placeholder="Enter a new item">
+    <button onclick="add()">ADD</button>
+    <ul id="listcontainer">
+        <li>Hello
+            <button onclick="deleteItem(event)">Delete</button>
+        </li>
+    </ul>
+
+    <script>
+        var ul = document.getElementById("listcontainer");
+        var input = document.getElementById("input");
+
+        // Add item when clicking the "Add" button
+        function add() {
+            if (input.value.trim() !== "") {
+                var listitem = document.createElement("li");
+                listitem.innerHTML = input.value + " <button onclick='deleteItem(event)'>Delete</button>";
+                ul.append(listitem);
+                input.value = ""; // Clear the input after adding
+            }
+        }
+
+        // Add item when pressing Enter
+        input.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                add();
+            }
+        });
+
+        // Delete the item
+        function deleteItem(event) {
+            event.target.parentElement.remove();
+        }
+    </script>
+</body>
+</html>

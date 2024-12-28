@@ -1,0 +1,23 @@
+<h1 class = "ok">one</h1>
+<h1 class = "ok">two</h1>
+<h1 class = "ok">three</h1>
+
+<script>
+    var div = document.querySelectorAll(".ok ")
+    for(i=0;i<div.length;i=i+1){
+        console.log(div[i].textContent)
+    }
+</script>
+
+<div>
+    <h1>Siva</h1>
+    <h1>Ranjith</h1>
+</div>
+<script>
+    var div = document.querySelector("div")
+    var h1=document.createElement("H1")
+    h1.textContent="Hello"
+    div.insertAdjacentElement("afterend",h1)    
+   
+</script>
+

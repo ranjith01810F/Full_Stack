@@ -1,0 +1,20 @@
+<button id="add" onclick="ad()">Add</button>
+<div id="addtext"></div>
+<script>
+    var div = document.getElementById("addtext");
+    var currentNumber = 1; // Start from 1
+
+    function ad() {
+        if (currentNumber <= 100) { // Check if the number is within the limit
+            var listitem = document.createElement("h1"); // Create a new <h1> element
+            listitem.textContent = currentNumber; // Set the current number
+            listitem.onclick = deleteitem; // Attach the deleteitem function
+            div.appendChild(listitem); // Append the <h1> to the div
+            currentNumber++; // Increment the number
+        }
+    }
+
+    function deleteitem(event) {
+        event.target.remove(); // Remove the clicked number
+    }
+</script>

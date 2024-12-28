@@ -1,0 +1,66 @@
+<input id = "box" onkeyup="update()">
+<h1 id = "repli"></h1>
+<script>
+    var replicate=document.getElementById("repli")
+    var inputbox = document.getElementById("box")
+    function update(){
+        replicate.textContent=inputbox.value 
+    }
+</script>
+
+
+
+<button onclick="update()">Add</button>
+<div id = "addition">
+
+</div>
+
+<script>
+    var div = document.getElementById("addition")
+    function update(){
+        var listitem=document.createElement("h1")
+        listitem.textContent="Hello"
+        div.append(listitem)
+    }
+</script>
+
+<style>
+
+</style>
+<button id="btn" onclick="clr()">change color</button>
+<script>
+    var button=document.getElementById("btn")
+    function clr(){
+        button.style.backgroundColor="aqua"
+    }
+</script>
+
+
+<h1 id="namechange">Name</h1>
+<button onclick="change(event)">Ranjith</button>
+<button onclick="change(event)">Siva</button>
+<button onclick="change(event)">Dynamic</button>
+
+<script>
+    var h1 = document.getElementById("namechange") 
+    function change(event){
+        h1.textContent=event.target.textContent
+    }
+</script>
+
+<h1 onclick="deleteitem(event)">one</h1>
+<h1 onclick="deleteitem(event)">two</h1>
+<h1 onclick="deleteitem(event)">three</h1>
+<h1 onclick="deleteitem(event)">four</h1>
+<h1 onclick="deleteitem(event)">five</h1>
+<h1 onclick="deleteitem(event)">six</h1>
+<h1 onclick="deleteitem(event)">seven</h1>
+
+<script>
+    function deleteitem(){
+        event.target.remove()
+    }
+</script>
+
+
+
